@@ -17,8 +17,11 @@ class PostModel
 
     public function getAll(): array
     {
-        $sql = "SELECT category.category_name,user.username, post.post_id, post.title, post.content, post.created_date
-                FROM user JOIN post JOIN category ON post.author_id = user.id and post.category_id = category.category_id;";
+        $sql = "SELECT category.category_name,user.username, 
+                post.post_id, post.title, post.content, post.created_date
+                FROM user JOIN post JOIN category ON 
+                post.author_id = user.id and post.category_id = category.category_id;";
+
         $stmt = $this->conn->query($sql);
 
         $data = [];

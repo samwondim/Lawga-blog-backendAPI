@@ -84,8 +84,6 @@ class UserModel
     public function get(): array | false
     {
         try {
-            //$form_data = (array)json_decode(file_get_contents("php://input"));
-            //$form_data = (array)json_decode($r);
             $form_data = array(
                 'username' => $_POST['username'],
                 'password' => $_POST['password']
@@ -95,8 +93,8 @@ class UserModel
             $this->password = $form_data['password'];
 
             $sql = "SELECT * 
-                FROM user
-                WHERE username = :username and password = :password";
+                    FROM user
+                    WHERE username = :username and password = :password";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindValue(":username", $this->username, PDO::PARAM_STR);
